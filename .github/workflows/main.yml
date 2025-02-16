@@ -5,6 +5,7 @@ on:
   push:
     branches:
     - test
+    - main
 
 jobs:
   buildWebGL:
@@ -12,9 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        projectPath:
-          - CityBuilder
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,7 +22,7 @@ jobs:
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
       - name: Restore LFS cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: lfs-cache
         with:
           path: .git/lfs
@@ -37,7 +35,7 @@ jobs:
           git reset --hard
 
       # Cache
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -50,10 +48,9 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}   
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: ${{ matrix.projectPath }}
           targetPlatform: WebGL
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: build-WebGL
           path: build/WebGL
@@ -66,7 +63,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: build-WebGL
           path: build
