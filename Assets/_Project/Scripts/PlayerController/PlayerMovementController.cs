@@ -1,17 +1,17 @@
-﻿using System;
-using BrackeysJam.PlayerController.InputReaders;
+﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace BrackeysJam.PlayerController
 {
     public class PlayerMovementController : MonoBehaviour, IEnableable
     {
-        private IInputReader<Vector2> _inputReader = new WASDInputReader();
-        private Vector2 _movementVector;
+        public Vector2 MoveInputVector { get; private set; }
+        private bool _enabled = false;
+
         private float _speed;
         private Rigidbody2D _rb;
-        
-        private bool _enabled = false;
+        private CustomInput _input;
 
         public void Initialize(float speed, Rigidbody2D rb)
         {
@@ -20,15 +20,48 @@ namespace BrackeysJam.PlayerController
 
             Enable();
         }
-        
-        private void Update()
+
+        private void OnEnable()
         {
-            _movementVector = _inputReader.Read() * _speed;
+            _input ??= new CustomInput();
+            _input.Enable();
+            _input.Player.Movement.performed += OnMovementPerformed;
+            _input.Player.Movement.canceled += OnMovementCanceled;
         }
 
-        private void FixedUpdate()
+        private void OnDisable()
         {
-            _rb.AddForce(_movementVector, ForceMode2D.Impulse);
+            _input.Disable();
+            _input.Player.Movement.performed -= OnMovementPerformed;
+            _input.Player.Movement.canceled -= OnMovementCanceled;
+        }
+
+        private void Update() => HandleMovementAnimation();
+        private void FixedUpdate() => HandleBasicMovement();
+
+        private void HandleBasicMovement()
+        {
+            _rb.linearVelocity = MoveInputVector * (_speed * Time.deltaTime);
+        }
+
+        private void HandleMovementAnimation()
+        {
+            if (MoveInputVector.magnitude > 0f && !DOTween.IsTweening(transform))
+                transform.DOScaleY(.9f, .1f).SetEase(Ease.InSine).OnComplete(() =>
+                {
+                    transform.DOScaleY(1f, .1f).SetEase(Ease.InSine);
+                    // STEP AUDIO.
+                });
+        }
+
+        private void OnMovementPerformed(InputAction.CallbackContext value)
+        {
+            MoveInputVector = value.ReadValue<Vector2>();
+        }
+
+        private void OnMovementCanceled(InputAction.CallbackContext value)
+        {
+            MoveInputVector = Vector2.zero;
         }
 
         #region IEnableable
