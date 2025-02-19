@@ -1,4 +1,5 @@
 ﻿using System;
+using BrackeysJam.EnemyController.SOs;
 using BrackeysJam.Core;
 using gishadev.tools.StateMachine;
 using Sirenix.OdinInspector;
@@ -24,7 +25,7 @@ namespace BrackeysJam.EnemyController
 
         private Transform _playerTrans;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             EnemyMovement = GetComponent<EnemyMovement>();
         }

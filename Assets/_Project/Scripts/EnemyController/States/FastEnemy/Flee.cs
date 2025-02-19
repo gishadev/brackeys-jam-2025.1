@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States.FastEnemy
 {
     public class Flee : StateWithElapsedTime
     {
-        private readonly FastEnemy _fastEnemy;
+        private readonly EnemyController.FleeingEnemy _fleeingEnemy;
         private readonly EnemyMovement _enemyMovement;
 
-        public Flee(FastEnemy fastEnemy, EnemyMovement enemyMovement)
+        public Flee(EnemyController.FleeingEnemy fleeingEnemy, EnemyMovement enemyMovement)
         {
-            _fastEnemy = fastEnemy;
+            _fleeingEnemy = fleeingEnemy;
             _enemyMovement = enemyMovement;
         }
 
@@ -21,24 +21,24 @@ namespace BrackeysJam.EnemyController
         public override void OnEnter()
         {
             SetStartTime();
-            _fastEnemy.ResetDamaged();
-            _enemyMovement.ChangeMoveSpeed(_fastEnemy.EnemyDataSO.MoveSpeed *
-                                           _fastEnemy.FastData.FleeMoveSpeedMultiplier);
+            _fleeingEnemy.ResetDamaged();
+            _enemyMovement.ChangeMoveSpeed(_fleeingEnemy.EnemyDataSO.MoveSpeed *
+                                           _fleeingEnemy.FleeingData.FleeMoveSpeedMultiplier);
             _enemyMovement.StartCoroutine(FleeRoutine());
         }
 
         public override void OnExit()
         {
             _enemyMovement.StopAllCoroutines();
-            _enemyMovement.ChangeMoveSpeed(_fastEnemy.EnemyDataSO.MoveSpeed);
+            _enemyMovement.ChangeMoveSpeed(_fleeingEnemy.EnemyDataSO.MoveSpeed);
         }
 
         private IEnumerator FleeRoutine()
         {
             while (true)
             {
-                var fleeDirection = (_fastEnemy.transform.position - _fastEnemy.PlayerTrans.position).normalized;
-                var fleePosition = _fastEnemy.transform.position + fleeDirection * 100f;
+                var fleeDirection = (_fleeingEnemy.transform.position - _fleeingEnemy.PlayerTrans.position).normalized;
+                var fleePosition = _fleeingEnemy.transform.position + fleeDirection * 100f;
                 _enemyMovement.SetDestination(fleePosition);
                 yield return new WaitForSeconds(0.6f);
             }

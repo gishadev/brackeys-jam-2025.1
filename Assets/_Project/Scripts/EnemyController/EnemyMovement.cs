@@ -61,7 +61,7 @@ namespace BrackeysJam.EnemyController
             MoveSpeed = newSpeed;
         }
 
-        private void FlipTowardsPosition(Vector2 position)
+        public void FlipTowardsPosition(Vector2 position)
         {
             var dir = (Vector3) position - transform.position;
             _spriteRenderer.flipX = dir.x > 0;

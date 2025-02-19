@@ -1,6 +1,6 @@
 ﻿using gishadev.tools.StateMachine;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States
 {
     public class Idle : IState
     {

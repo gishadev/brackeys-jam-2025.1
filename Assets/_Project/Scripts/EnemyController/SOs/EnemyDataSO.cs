@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.SOs
 {
     public abstract class EnemyDataSO : SerializedScriptableObject
     {

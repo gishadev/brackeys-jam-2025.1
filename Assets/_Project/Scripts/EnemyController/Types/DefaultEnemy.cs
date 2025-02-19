@@ -1,4 +1,6 @@
 ﻿using System;
+using BrackeysJam.EnemyController.SOs;
+using BrackeysJam.EnemyController.States;
 using gishadev.tools.StateMachine;
 using Sirenix.OdinInspector;
 using UnityEngine;

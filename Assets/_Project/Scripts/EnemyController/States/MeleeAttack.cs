@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States
 {
     public class MeleeAttack : StateWithElapsedTime
     {

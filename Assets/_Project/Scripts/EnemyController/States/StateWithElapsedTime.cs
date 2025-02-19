@@ -1,7 +1,7 @@
 ﻿using gishadev.tools.StateMachine;
 using UnityEngine;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States
 {
     public abstract class StateWithElapsedTime : IState
     {
