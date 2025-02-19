@@ -21,19 +21,9 @@ namespace BrackeysJam.PlayerController
             Enable();
         }
 
-        private void OnEnable()
-        {
-            _input ??= new CustomInput();
-            _input.Enable();
-            _input.Player.Movement.performed += OnMovementPerformed;
-            _input.Player.Movement.canceled += OnMovementCanceled;
-        }
-
         private void OnDisable()
         {
-            _input.Disable();
-            _input.Player.Movement.performed -= OnMovementPerformed;
-            _input.Player.Movement.canceled -= OnMovementCanceled;
+            Disable();
         }
 
         private void Update() => HandleMovementAnimation();
@@ -68,12 +58,21 @@ namespace BrackeysJam.PlayerController
 
         public void Enable()
         {
+            _input ??= new CustomInput();
+            _input.Enable();
+            _input.Player.Movement.performed += OnMovementPerformed;
+            _input.Player.Movement.canceled += OnMovementCanceled;
+            
             _enabled = true;
         }
 
         public void Disable()
         {
             _enabled = false;
+            
+            _input.Disable();
+            _input.Player.Movement.performed -= OnMovementPerformed;
+            _input.Player.Movement.canceled -= OnMovementCanceled;
         }
 
         #endregion
