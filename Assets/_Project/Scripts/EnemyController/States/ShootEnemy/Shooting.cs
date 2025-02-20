@@ -1,36 +1,30 @@
 ﻿using System.Threading;
-using BrackeysJam.EnemyController;
 using Cysharp.Threading.Tasks;
-using gishadev.tools.Audio;
-using gishadev.tools.Effects;
 using gishadev.tools.StateMachine;
-using UnityEngine;
 
 namespace BrackeysJam.EnemyController
 {
     public class Shooting : IState
     {
-        private readonly ShootEnemy _shootEnemy;
+        private readonly ShootEnemy _enemy;
         private readonly EnemyMovement _enemyMovement;
-        private Transform _playerTrans;
         private CancellationTokenSource _cts;
 
-        public Shooting(ShootEnemy shootEnemy, EnemyMovement enemyMovement)
+        public Shooting(ShootEnemy enemy, EnemyMovement enemyMovement)
         {
-            _shootEnemy = shootEnemy;
+            _enemy = enemy;
             _enemyMovement = enemyMovement;
         }
 
         public void Tick()
         {
-            _enemyMovement.FlipTowardsPosition(_playerTrans.transform.position);
+            _enemyMovement.FlipTowardsPosition(_enemy.transform.position);
         }
 
         public void OnEnter()
         {
             _enemyMovement.Stop();
             _cts = new CancellationTokenSource();
-            _playerTrans = _shootEnemy.PlayerTrans;
             ShootAsync();
         }
 
@@ -43,7 +37,7 @@ namespace BrackeysJam.EnemyController
         {
             while (!_cts.IsCancellationRequested)
             {
-                await UniTask.WaitForSeconds(_shootEnemy.ShootData.ShootDelay, cancellationToken: _cts.Token)
+                await UniTask.WaitForSeconds(_enemy.ShootData.ShootDelay, cancellationToken: _cts.Token)
                     .SuppressCancellationThrow();
                 if (_cts.IsCancellationRequested)
                     return;

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Aoiti.Pathfinding;
+using BrackeysJam.Core;
 using UnityEngine;
 
 namespace BrackeysJam.EnemyController
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyMovement : MonoBehaviourWithMovementEffector
     {
         [SerializeField] private float _gridSize = 0.5f;
         [SerializeField] private LayerMask _obstaclesMask;
@@ -30,6 +31,9 @@ namespace BrackeysJam.EnemyController
 
         private void FixedUpdate()
         {
+            if (!IsDefaultMovementEnabled)
+                return;
+            
             if (_pathLeftToGo.Count > 0)
                 HandleMovementToTarget();
         }

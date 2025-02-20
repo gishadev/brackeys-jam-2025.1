@@ -40,7 +40,15 @@ namespace BrackeysJam.EnemyController.States
                     .SuppressCancellationThrow();
                 if (_cts.IsCancellationRequested)
                     return;
+                
+                OnAttacked();
             }
+        }
+        
+        private void OnAttacked()
+        {
+            _enemy.Player.TakeDamage(_enemy.EnemyDataSO.MeleeAttackDamage);
+            _enemy.Player.PhysicsImpactEffector.Act(_enemy.transform.position, 30f);
         }
     }
 }

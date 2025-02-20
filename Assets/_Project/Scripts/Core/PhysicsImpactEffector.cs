@@ -33,7 +33,7 @@ namespace BrackeysJam.Core
             _damageableRigidbody.AddForce(impactDirection * impactIntensity, ForceMode2D.Impulse);
 
             var timeTask = UniTask.WaitForSeconds(_impactMaxTime);
-            var velocityTask = UniTask.WaitUntil(() => _damageableRigidbody.velocity.magnitude < _impactMinVelocity);
+            var velocityTask = UniTask.WaitUntil(() => _damageableRigidbody.linearVelocity.magnitude < _impactMinVelocity);
             await UniTask.WhenAny(timeTask, velocityTask);
             
             if (_cts.Token.IsCancellationRequested)

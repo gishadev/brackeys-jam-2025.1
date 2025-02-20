@@ -37,7 +37,7 @@ namespace BrackeysJam.EnemyController.States.FastEnemy
         {
             while (true)
             {
-                var fleeDirection = (_fleeingEnemy.transform.position - _fleeingEnemy.PlayerTrans.position).normalized;
+                var fleeDirection = (_fleeingEnemy.transform.position - _fleeingEnemy.Player.transform.position).normalized;
                 var fleePosition = _fleeingEnemy.transform.position + fleeDirection * 100f;
                 _enemyMovement.SetDestination(fleePosition);
                 yield return new WaitForSeconds(0.6f);

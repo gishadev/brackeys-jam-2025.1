@@ -35,7 +35,7 @@ namespace BrackeysJam.EnemyController.States
             while (true)
             {
                 yield return new WaitForSeconds(0.6f);
-                _enemyMovement.SetDestination(_enemy.PlayerTrans.position);
+                _enemyMovement.SetDestination(_enemy.Player.transform.position);
             }
         }
     }

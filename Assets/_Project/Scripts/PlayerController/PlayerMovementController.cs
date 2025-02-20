@@ -38,7 +38,14 @@ namespace BrackeysJam.PlayerController
         }
 
         private void Update() => HandleMovementAnimation();
-        private void FixedUpdate() => HandleBasicMovement();
+
+        private void FixedUpdate()
+        {
+            if (!IsDefaultMovementEnabled)
+                return;
+            
+            HandleBasicMovement();
+        }
 
         private void HandleBasicMovement()
         {
