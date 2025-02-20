@@ -27,7 +27,7 @@ namespace BrackeysJam.PlayerController
         public async UniTask Initialize()
         {
             _movementController.Initialize(_speed, Rigidbody);
-            await _attackController.Initialize();
+            _attackController.Initialize();
         }
 
 #if UNITY_EDITOR

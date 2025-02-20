@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff804af48d14b8abf70a5a22c133183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponUIContainer: {fileID: 0}
+  _weaponUIContainer: {fileID: 1452101855}
 --- !u!4 &2137006318
 Transform:
   m_ObjectHideFlags: 0

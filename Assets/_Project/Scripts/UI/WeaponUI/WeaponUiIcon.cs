@@ -12,8 +12,12 @@ namespace BrackeysJam.UI.WeaponUI
         [SerializeField, Required] private TextMeshProUGUI _label;
         [SerializeField, Required] private Image _icon;
 
+        public WeaponDataSO StoredData { get; private set; }
+        
         public override void SetIconParams(WeaponDataSO buttonParams)
         {
+            StoredData = buttonParams;
+            
             _label.text = buttonParams.Name;
             _icon.sprite = buttonParams.Icon;
         }

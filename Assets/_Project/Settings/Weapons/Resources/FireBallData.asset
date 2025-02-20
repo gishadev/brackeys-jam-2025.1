@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d421a3b6b7942498617c1cee245e150, type: 3}
-  m_Name: BowData
+  m_Name: FireBallData
   m_EditorClassIdentifier: 
-  Name: ProjectileWeapon
+  Name: FireBallSpell
   Damage: 5
   Range: 15
-  Cooldown: 2
+  Attacks: 1
+  CastCooldown: 2
+  CanExpire: 1
+  ExpirationTime: 15
   Prefab: {fileID: 3043796179125965548, guid: 798e7156269e905459c2e7459e70b463, type: 3}
   Icon: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5, type: 3}
+  MaxEffectTime: 0
+  Effect: {fileID: 0}

@@ -6,7 +6,7 @@ namespace BrackeysJam.Weapons.ConcreteWeapons
     {
         public override void Use()
         {
-            Debug.Log("Use sword");
+            PlayEffect();
         }
     }
 }
