@@ -1,10 +1,11 @@
-﻿using DG.Tweening;
+﻿using BrackeysJam.Core;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace BrackeysJam.PlayerController
 {
-    public class PlayerMovementController : MonoBehaviour, IEnableable
+    public class PlayerMovementController : MonoBehaviourWithMovementEffector, IEnableable
     {
         public Vector2 MoveInputVector { get; private set; }
         private bool _enabled = false;
