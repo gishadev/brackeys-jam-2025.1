@@ -68,7 +68,7 @@ namespace BrackeysJam.EnemyController
         public void FlipTowardsPosition(Vector2 position)
         {
             var dir = (Vector3) position - transform.position;
-            _spriteRenderer.flipX = dir.x > 0;
+            _spriteRenderer.flipX = dir.x < 0;
         }
 
         private void HandleMovementToTarget()

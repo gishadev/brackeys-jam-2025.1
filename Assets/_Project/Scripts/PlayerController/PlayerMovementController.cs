@@ -12,13 +12,15 @@ namespace BrackeysJam.PlayerController
 
         private float _speed;
         private Rigidbody2D _rb;
+        private SpriteRenderer _spriteRenderer;
         private CustomInput _input;
 
-        public void Initialize(float speed, Rigidbody2D rb)
+        public void Initialize(float speed, Rigidbody2D rb, SpriteRenderer sr)
         {
             _speed = speed;
             _rb = rb;
-
+            _spriteRenderer = sr;
+            
             Enable();
         }
 
@@ -37,7 +39,11 @@ namespace BrackeysJam.PlayerController
             _input.Player.Movement.canceled -= OnMovementCanceled;
         }
 
-        private void Update() => HandleMovementAnimation();
+        private void Update()
+        {
+            FlipTowards(MoveInputVector);
+            HandleMovementAnimation();
+        }
 
         private void FixedUpdate()
         {
@@ -50,6 +56,11 @@ namespace BrackeysJam.PlayerController
         private void HandleBasicMovement()
         {
             _rb.linearVelocity = MoveInputVector * (_speed * Time.deltaTime);
+        }
+
+        private void FlipTowards(Vector2 direction)
+        {
+            _spriteRenderer.flipX = direction.x < 0;
         }
 
         private void HandleMovementAnimation()

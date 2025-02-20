@@ -13,11 +13,12 @@ namespace BrackeysJam.PlayerController
         private PlayerMovementController _movementController;
 
         [SerializeField, Required] private Rigidbody2D _rb;
+        [SerializeField, Required] private SpriteRenderer _spriteRenderer;
         public Rigidbody2D Rigidbody => _rb;
         
         private void Awake()
         {
-            _movementController.Initialize(_speed, Rigidbody);
+            _movementController.Initialize(_speed, Rigidbody, _spriteRenderer);
         }
 
 #if UNITY_EDITOR

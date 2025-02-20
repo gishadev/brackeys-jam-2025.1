@@ -161,6 +161,7 @@ MonoBehaviour:
   _speed: 500
   _movementController: {fileID: 3406849207582631122}
   _rb: {fileID: 2669483500213298062}
+  _spriteRenderer: {fileID: 5310276254211073828}
   <StartHealth>k__BackingField: 20
 --- !u!50 &2669483500213298062
 Rigidbody2D:
