@@ -54,7 +54,7 @@ namespace BrackeysJam.Weapons
             DisableEffect(freeEffect).Forget();
         }
 
-        private async UniTaskVoid DisableEffect(ParticleSystem effect)
+        protected async UniTaskVoid DisableEffect(ParticleSystem effect)
         {
             await UniTask.WaitForSeconds(WeaponData.MaxEffectTime);
             effect.Stop();
