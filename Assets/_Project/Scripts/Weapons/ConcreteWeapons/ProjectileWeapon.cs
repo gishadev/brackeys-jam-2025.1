@@ -1,4 +1,6 @@
-﻿using BrackeysJam.Weapons.Factory;
+﻿using System.Linq;
+using BrackeysJam.Weapons.Factory;
+using BrackeysJam.Weapons.Projectiles;
 using UnityEngine;
 
 namespace BrackeysJam.Weapons.ConcreteWeapons
@@ -29,7 +31,17 @@ namespace BrackeysJam.Weapons.ConcreteWeapons
 
         protected virtual void FireProjectile()
         {
-            var projectile = _projectileFactory.SpawnProjectile(transform.position, _colliders[0]?.transform.position ?? transform.forward, WeaponData.Effect.gameObject);
+            var projectile = _effectsPool.FirstOrDefault(e => !e.gameObject.activeSelf)?.GetComponent<IProjectile>();
+            
+            if (projectile == null)
+            {
+                projectile = _projectileFactory.SpawnProjectile(transform.position, _colliders[0]?.transform.position ?? transform.forward, WeaponData.Effect.gameObject);
+                _effectsPool.Add(projectile.transform.GetComponent<ParticleSystem>());
+            }
+
+            projectile.SetStartPosition(transform.position);
+            projectile.SetTargetPosition(_colliders[0]?.transform.position ?? transform.forward);
+
             projectile.Run();
             DisableEffect(projectile.transform.GetComponent<ParticleSystem>()).Forget();
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BrackeysJam.Weapons.Projectiles
 {
@@ -25,13 +26,18 @@ namespace BrackeysJam.Weapons.Projectiles
 
         public void Run()
         {
+            transform.parent = null;
+            transform.gameObject.SetActive(true);
+
             _rigidbody.linearVelocity = (_targetPosition - transform.position).normalized * _speed;
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            Instantiate(_hitEffect, transform);
-            Destroy(gameObject, _hitEffect.main.duration);
+            gameObject.SetActive(false);
+
+            var hit = Instantiate(_hitEffect, transform.position, Quaternion.identity);
+            Destroy(hit.gameObject, _hitEffect.main.duration);
         }
     }
 }

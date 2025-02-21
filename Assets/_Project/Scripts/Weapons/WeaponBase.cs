@@ -10,7 +10,7 @@ namespace BrackeysJam.Weapons
     {
         public WeaponDataSO WeaponData { get; private set; }
 
-        private List<ParticleSystem> _effectsPool;
+        protected List<ParticleSystem> _effectsPool;
         
         public virtual void Initialize(WeaponDataSO weaponData)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6346725292900609404}
   - component: {fileID: 4832793208613396783}
   - component: {fileID: 1186294994027918972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4775,7 +4775,7 @@ GameObject:
   - component: {fileID: 1531712957572022355}
   - component: {fileID: 6587724648844306978}
   - component: {fileID: 3228165355008315803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9584,7 +9584,7 @@ GameObject:
   - component: {fileID: 3476362840314738816}
   - component: {fileID: 682074004455783887}
   - component: {fileID: 4524795138746889621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14362,7 +14362,8 @@ GameObject:
   - component: {fileID: 1893032508233183891}
   - component: {fileID: 3678983977656900619}
   - component: {fileID: 3512504356336683878}
-  m_Layer: 0
+  - component: {fileID: 3000493757802605956}
+  m_Layer: 9
   m_Name: FireballProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19382,3 +19383,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &3000493757802605956
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934877696294043141}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
