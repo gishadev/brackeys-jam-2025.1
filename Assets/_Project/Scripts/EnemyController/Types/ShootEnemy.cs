@@ -4,6 +4,7 @@ using BrackeysJam.EnemyController.States;
 using gishadev.tools.StateMachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace BrackeysJam.EnemyController
 {
@@ -12,17 +13,19 @@ namespace BrackeysJam.EnemyController
         [field: SerializeField, InlineEditor] public ShootEnemyDataSO ShootData { get; private set; }
         [field: SerializeField] public Transform ShootPoint { private set; get; }
 
+        [Inject] private DiContainer _diContainer;
+
         public override EnemyDataSO EnemyDataSO
         {
             get => ShootData;
-            protected set => ShootData = (ShootEnemyDataSO) value;
+            protected set => ShootData = (ShootEnemyDataSO)value;
         }
 
         protected override void InitStateMachine()
         {
             StateMachine = new StateMachine();
 
-            var shooting = new Shooting(this, EnemyMovement);
+            var shooting = new Shooting(this, EnemyMovement, _diContainer);
             var moveAway = new MoveAway(this, EnemyMovement);
             var die = new Die(this);
 

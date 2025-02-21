@@ -14,7 +14,7 @@ namespace BrackeysJam.EnemyController.SOs
 
         [BoxGroup("Split/Left/General")]
         [OdinSerialize, ShowInInspector]
-        public bool IsBoss { private set; get; }
+        public bool IsElite { private set; get; }
         
         [BoxGroup("Split/Left/General")]
         [OdinSerialize, ShowInInspector, GUIColor("green")]

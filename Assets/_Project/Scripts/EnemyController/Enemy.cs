@@ -44,7 +44,7 @@ namespace BrackeysJam.EnemyController
 
             InitStateMachine();
 
-            if (EnemyDataSO.IsBoss)
+            if (EnemyDataSO.IsElite)
                 transform.localScale = Vector3.one * 2f;
             else
                 transform.localScale = Vector3.one;
@@ -71,7 +71,7 @@ namespace BrackeysJam.EnemyController
         {
             EnemyDataSO = enemyData;
 
-            if (enemyData.IsBoss)
+            if (enemyData.IsElite)
                 Debug.Log(("boss"));
         }
 

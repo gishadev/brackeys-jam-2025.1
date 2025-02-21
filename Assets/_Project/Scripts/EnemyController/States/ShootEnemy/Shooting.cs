@@ -1,24 +1,31 @@
 ﻿using System.Threading;
+using BrackeysJam.Projectiles;
 using Cysharp.Threading.Tasks;
+using gishadev.tools.Effects;
 using gishadev.tools.StateMachine;
+using UnityEngine;
+using Zenject;
 
 namespace BrackeysJam.EnemyController
 {
     public class Shooting : IState
     {
+        [Inject] private IOtherEmitter _otherEmitter;
+
         private readonly ShootEnemy _enemy;
         private readonly EnemyMovement _enemyMovement;
         private CancellationTokenSource _cts;
 
-        public Shooting(ShootEnemy enemy, EnemyMovement enemyMovement)
+        public Shooting(ShootEnemy enemy, EnemyMovement enemyMovement, DiContainer diContainer)
         {
+            diContainer.Inject(this);
             _enemy = enemy;
             _enemyMovement = enemyMovement;
         }
 
         public void Tick()
         {
-            _enemyMovement.FlipTowardsPosition(_enemy.transform.position);
+            _enemyMovement.FlipTowardsPosition(_enemy.Player.transform.position);
         }
 
         public void OnEnter()
@@ -42,19 +49,16 @@ namespace BrackeysJam.EnemyController
                 if (_cts.IsCancellationRequested)
                     return;
 
-                // var shootDir = (_playerTrans.transform.position - _shootEnemy.transform.position).normalized;
-                // var shootRotation =
-                //     Quaternion.AngleAxis(Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg, Vector3.forward);
+                var shootDir = (_enemy.Player.transform.position - _enemy.transform.position).normalized;
+                var shootRotation =
+                    Quaternion.AngleAxis(Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg, Vector3.forward);
 
-                // OtherPoolEnum projectilePoolKey = _shootEnemy.EnemyDataSO.IsBoss
-                //     ? OtherPoolEnum.BOSS_PROJECTILE
-                //     : OtherPoolEnum.ENEMY_PROJECTILE;
-                //
-                // var projectile = OtherEmitter.I
-                //     .EmitAt(projectilePoolKey, _shootEnemy.ShootPoint.position, shootRotation)
-                //     .GetComponent<EnemyProjectile>();
-                // projectile.SetDamage(_shootEnemy.ShootData.ShootProjectileDamage);
-                
+                OtherPoolEnum projectilePoolKey = OtherPoolEnum.ENEMY_PROJECTILE;
+                var projectile = _otherEmitter
+                    .EmitAt(projectilePoolKey, _enemy.ShootPoint.position, shootRotation)
+                    .GetComponent<EnemyProjectile>();
+                projectile.SetDamage(_enemy.ShootData.ShootProjectileDamage);
+
                 // AudioManager.I.PlayAudio(SFXAudioEnum.ENEMY_SHOOT);
             }
         }
