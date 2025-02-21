@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: PoolEnumType
       Entry: 3
       Data: 0
-    - Name: IsBoss
+    - Name: IsElite
       Entry: 5
       Data: false
     - Name: StartHealth
@@ -50,10 +50,10 @@ MonoBehaviour:
       Data: 10
     - Name: ShootMinRadius
       Entry: 4
-      Data: 2
+      Data: 3
     - Name: ShootMaxRadius
       Entry: 4
-      Data: 6
+      Data: 7
     - Name: PreferableDistanceToPlayer
       Entry: 4
       Data: 5
