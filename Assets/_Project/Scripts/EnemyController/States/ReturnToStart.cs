@@ -2,7 +2,7 @@
 using gishadev.tools.StateMachine;
 using UnityEngine;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States
 {
     public class ReturnToStart : IState
     {

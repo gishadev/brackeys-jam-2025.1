@@ -1,5 +1,7 @@
 ﻿using System;
 using BrackeysJam.Core;
+using BrackeysJam.EnemyController.SOs;
+using BrackeysJam.PlayerController;
 using gishadev.tools.StateMachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -7,7 +9,7 @@ using UnityEngine;
 namespace BrackeysJam.EnemyController
 {
     [RequireComponent(typeof(EnemyMovement))]
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour, IDamageableWithPhysicsImpact
     {
         [SerializeField, Required] private EnemyMovement _enemyMovement;
         
@@ -16,15 +18,15 @@ namespace BrackeysJam.EnemyController
         public event Action<int> HealthChanged;
         public int StartHealth => EnemyDataSO.StartHealth;
         public int CurrentHealth { get; private set; }
+        public PhysicsImpactEffector PhysicsImpactEffector { get; private set; }
         public Vector2 StartPosition { get; private set; }
-        public Transform PlayerTrans => _playerTrans;
-
+        public Player Player => _player;
         protected StateMachine StateMachine;
         protected EnemyMovement EnemyMovement { get; private set; }
 
-        private Transform _playerTrans;
+        private Player _player;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             EnemyMovement = GetComponent<EnemyMovement>();
         }
@@ -32,6 +34,7 @@ namespace BrackeysJam.EnemyController
         private void Start()
         {
             OnSpawned();
+            PhysicsImpactEffector = new PhysicsImpactEffector(EnemyMovement.Rigidbody, EnemyMovement);
         }
 
         public void OnSpawned()
@@ -41,7 +44,7 @@ namespace BrackeysJam.EnemyController
 
             InitStateMachine();
 
-            if (EnemyDataSO.IsBoss)
+            if (EnemyDataSO.IsElite)
                 transform.localScale = Vector3.one * 2f;
             else
                 transform.localScale = Vector3.one;
@@ -49,7 +52,7 @@ namespace BrackeysJam.EnemyController
 
         private void OnEnable()
         {
-            _playerTrans = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG_NAME).transform;
+            _player = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG_NAME).GetComponent<Player>();
         }
 
         private void OnDisable() => StateMachine.CurrentState.OnExit();
@@ -68,7 +71,7 @@ namespace BrackeysJam.EnemyController
         {
             EnemyDataSO = enemyData;
 
-            if (enemyData.IsBoss)
+            if (enemyData.IsElite)
                 Debug.Log(("boss"));
         }
 
@@ -78,7 +81,7 @@ namespace BrackeysJam.EnemyController
             GetDistanceToPlayer() < EnemyDataSO.FollowRadius;
         protected bool InMeleeAttackReachWithPlayer() =>
             GetDistanceToPlayer() < EnemyDataSO.MeleeAttackRadius;
-        protected float GetDistanceToPlayer() => Vector3.Distance(PlayerTrans.position, transform.position);
+        protected float GetDistanceToPlayer() => Vector3.Distance(Player.transform.position, transform.position);
 
 
         protected virtual void OnDrawGizmosSelected()
@@ -92,5 +95,6 @@ namespace BrackeysJam.EnemyController
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, EnemyDataSO.FollowRadius);
         }
+
     }
 }

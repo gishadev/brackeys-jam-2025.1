@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.SOs
 {
     public abstract class EnemyDataSO : SerializedScriptableObject
     {
@@ -14,7 +14,7 @@ namespace BrackeysJam.EnemyController
 
         [BoxGroup("Split/Left/General")]
         [OdinSerialize, ShowInInspector]
-        public bool IsBoss { private set; get; }
+        public bool IsElite { private set; get; }
         
         [BoxGroup("Split/Left/General")]
         [OdinSerialize, ShowInInspector, GUIColor("green")]

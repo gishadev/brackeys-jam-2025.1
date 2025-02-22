@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace BrackeysJam.EnemyController
+namespace BrackeysJam.EnemyController.States
 {
     public class MeleeAttack : StateWithElapsedTime
     {
@@ -40,7 +40,15 @@ namespace BrackeysJam.EnemyController
                     .SuppressCancellationThrow();
                 if (_cts.IsCancellationRequested)
                     return;
+                
+                OnAttacked();
             }
+        }
+        
+        private void OnAttacked()
+        {
+            _enemy.Player.TakeDamage(_enemy.EnemyDataSO.MeleeAttackDamage);
+            _enemy.Player.PhysicsImpactEffector.Act(_enemy.transform.position, 30f);
         }
     }
 }
