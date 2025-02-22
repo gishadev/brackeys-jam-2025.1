@@ -1,30 +1,42 @@
-﻿using System;
+using System;
 using BrackeysJam.Core;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BrackeysJam.PlayerController
 {
-    public partial class Player : MonoBehaviour, IDamageableWithPhysicsImpact
+    public partial class Player : MonoBehaviour
     {
-        [Header("Data")] [SerializeField] private float _speed;
+        [Header("Data")]
+        [SerializeField] private float _speed;
 
-        [Header("References")] [SerializeField, Required]
-        private PlayerMovementController _movementController;
+        [Header("Controllers")] 
+        [SerializeField, Required] private PlayerMovementController _movementController;
+        [SerializeField, Required] private PlayerAttackController _attackController;
 
+        [Header("Native Components")] 
         [SerializeField, Required] private Rigidbody2D _rb;
         [SerializeField, Required] private SpriteRenderer _spriteRenderer;
+        
         public Rigidbody2D Rigidbody => _rb;
 
-        private void Awake()
+        private async UniTaskVoid Awake()
+        {
+            await Initialize();
+        }
+        
+        public async UniTask Initialize()
         {
             _movementController.Initialize(_speed, Rigidbody, _spriteRenderer);
+            _attackController.Initialize();
         }
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
             _movementController = GetComponent<PlayerMovementController>();
+            _attackController = GetComponent<PlayerAttackController>();
             _rb = GetComponent<Rigidbody2D>();
 
             UnityEditor.EditorUtility.SetDirty(this);

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d421a3b6b7942498617c1cee245e150, type: 3}
+  m_Name: FireBallData
+  m_EditorClassIdentifier: 
+  Name: FireBallSpell
+  Damage: 5
+  Range: 4
+  Attacks: 1
+  CastCooldown: 1
+  CanExpire: 0
+  ExpirationTime: 15
+  Prefab: {fileID: 3043796179125965548, guid: 798e7156269e905459c2e7459e70b463, type: 3}
+  Icon: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5, type: 3}
+  MaxEffectTime: 3
+  Effect: {fileID: 6823140796783459618, guid: 3351ff3355864ec44a1f394c6ac5982d, type: 3}
