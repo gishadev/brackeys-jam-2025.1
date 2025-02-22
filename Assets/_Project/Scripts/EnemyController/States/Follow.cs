@@ -7,12 +7,12 @@ namespace BrackeysJam.EnemyController.States
     public class Follow : IState
     {
         private readonly Enemy _enemy;
-        private readonly EnemyMovement _enemyMovement;
+        private readonly EnemyMovementController _enemyMovementController;
 
-        public Follow(Enemy enemy, EnemyMovement enemyMovement)
+        public Follow(Enemy enemy, EnemyMovementController enemyMovementController)
         {
             _enemy = enemy;
-            _enemyMovement = enemyMovement;
+            _enemyMovementController = enemyMovementController;
         }
 
         public void Tick()
@@ -21,13 +21,13 @@ namespace BrackeysJam.EnemyController.States
 
         public void OnEnter()
         {
-            _enemyMovement.ChangeMoveSpeed(_enemy.EnemyDataSO.MoveSpeed);
-            _enemyMovement.StartCoroutine(FollowRoutine());
+            _enemyMovementController.ChangeMoveSpeed(_enemy.EnemyDataSO.MoveSpeed);
+            _enemyMovementController.StartCoroutine(FollowRoutine());
         }
 
         public void OnExit()
         {
-            _enemyMovement.StopAllCoroutines();
+            _enemyMovementController.StopAllCoroutines();
         }
 
         private IEnumerator FollowRoutine()
@@ -35,7 +35,7 @@ namespace BrackeysJam.EnemyController.States
             while (true)
             {
                 yield return new WaitForSeconds(0.6f);
-                _enemyMovement.SetDestination(_enemy.Player.transform.position);
+                _enemyMovementController.SetDestination(_enemy.Player.transform.position);
             }
         }
     }

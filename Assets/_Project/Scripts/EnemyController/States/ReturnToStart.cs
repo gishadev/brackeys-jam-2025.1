@@ -7,12 +7,12 @@ namespace BrackeysJam.EnemyController.States
     public class ReturnToStart : IState
     {
         private readonly Enemy _enemy;
-        private readonly EnemyMovement _enemyMovement;
+        private readonly EnemyMovementController _enemyMovementController;
 
-        public ReturnToStart(Enemy enemy, EnemyMovement enemyMovement)
+        public ReturnToStart(Enemy enemy, EnemyMovementController enemyMovementController)
         {
             _enemy = enemy;
-            _enemyMovement = enemyMovement;
+            _enemyMovementController = enemyMovementController;
         }
 
         public void Tick()
@@ -21,20 +21,20 @@ namespace BrackeysJam.EnemyController.States
 
         public void OnEnter()
         {
-            _enemyMovement.ChangeMoveSpeed(_enemy.EnemyDataSO.MoveSpeed);
-            _enemyMovement.StartCoroutine(ReturnRoutine());
+            _enemyMovementController.ChangeMoveSpeed(_enemy.EnemyDataSO.MoveSpeed);
+            _enemyMovementController.StartCoroutine(ReturnRoutine());
         }
 
         public void OnExit()
         {
-            _enemyMovement.StopAllCoroutines();
+            _enemyMovementController.StopAllCoroutines();
         }
 
         private IEnumerator ReturnRoutine()
         {
             while (true)
             {
-                _enemyMovement.SetDestination(_enemy.StartPosition);
+                _enemyMovementController.SetDestination(_enemy.StartPosition);
                 yield return new WaitForSeconds(2f);
             }
         }

@@ -4,5 +4,6 @@
     {
         public void Enable();
         public void Disable();
+        bool IsEnabled { get; }
     }
 }

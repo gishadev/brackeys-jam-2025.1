@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91e8793fb2ce604ab357c543009780d, type: 3}
   m_Name: SOInstaller
   m_EditorClassIdentifier: 
+  _gameMasterDataSO: {fileID: 11400000, guid: 929d7272bac81d64ca0ba77f7ec127c0, type: 2}

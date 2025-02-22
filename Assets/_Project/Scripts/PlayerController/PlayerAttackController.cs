@@ -23,6 +23,7 @@ namespace BrackeysJam.PlayerController
         private Dictionary<IWeapon, float> _weaponToCastTime;
         
         private bool _enabled = false;
+        public bool IsEnabled => _enabled;
 
         private void Update()
         {
@@ -107,6 +108,7 @@ namespace BrackeysJam.PlayerController
         {
             _enabled = false;
         }
+
 
         #endregion
     }

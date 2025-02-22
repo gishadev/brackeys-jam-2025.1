@@ -6,13 +6,13 @@ namespace BrackeysJam.EnemyController.States
     public class MeleeAttack : StateWithElapsedTime
     {
         private readonly Enemy _enemy;
-        private readonly EnemyMovement _enemyMovement;
+        private readonly EnemyMovementController _enemyMovementController;
         private CancellationTokenSource _cts;
 
-        public MeleeAttack(Enemy enemy, EnemyMovement enemyMovement)
+        public MeleeAttack(Enemy enemy, EnemyMovementController enemyMovementController)
         {
             _enemy = enemy;
-            _enemyMovement = enemyMovement;
+            _enemyMovementController = enemyMovementController;
         }
 
         public override void Tick()
@@ -22,7 +22,7 @@ namespace BrackeysJam.EnemyController.States
         public override void OnEnter()
         {
             _cts = new CancellationTokenSource();
-            _enemyMovement.Stop();
+            _enemyMovementController.Stop();
 
             MeleeAttackAsync();
         }

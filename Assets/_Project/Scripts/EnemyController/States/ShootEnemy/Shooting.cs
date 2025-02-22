@@ -13,24 +13,24 @@ namespace BrackeysJam.EnemyController
         [Inject] private IOtherEmitter _otherEmitter;
 
         private readonly ShootEnemy _enemy;
-        private readonly EnemyMovement _enemyMovement;
+        private readonly EnemyMovementController _enemyMovementController;
         private CancellationTokenSource _cts;
 
-        public Shooting(ShootEnemy enemy, EnemyMovement enemyMovement, DiContainer diContainer)
+        public Shooting(ShootEnemy enemy, EnemyMovementController enemyMovementController, DiContainer diContainer)
         {
             diContainer.Inject(this);
             _enemy = enemy;
-            _enemyMovement = enemyMovement;
+            _enemyMovementController = enemyMovementController;
         }
 
         public void Tick()
         {
-            _enemyMovement.FlipTowardsPosition(_enemy.Player.transform.position);
+            _enemyMovementController.FlipTowardsPosition(_enemy.Player.transform.position);
         }
 
         public void OnEnter()
         {
-            _enemyMovement.Stop();
+            _enemyMovementController.Stop();
             _cts = new CancellationTokenSource();
             ShootAsync();
         }

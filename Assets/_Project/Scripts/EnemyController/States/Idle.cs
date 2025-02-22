@@ -4,11 +4,11 @@ namespace BrackeysJam.EnemyController.States
 {
     public class Idle : IState
     {
-        private readonly EnemyMovement _enemyMovement;
+        private readonly EnemyMovementController _enemyMovementController;
 
-        public Idle(EnemyMovement enemyMovement)
+        public Idle(EnemyMovementController enemyMovementController)
         {
-            _enemyMovement = enemyMovement;
+            _enemyMovementController = enemyMovementController;
         }
 
         public void Tick()
@@ -17,7 +17,7 @@ namespace BrackeysJam.EnemyController.States
 
         public void OnEnter()
         {
-            _enemyMovement.Stop();
+            _enemyMovementController.Stop();
         }
 
         public void OnExit()

@@ -112,9 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridSize: 1
-  _obstaclesMask:
-    serializedVersion: 2
-    m_Bits: 64
   _drawDebugLines: 0
 --- !u!114 &2491834885544669703
 MonoBehaviour:
@@ -128,8 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b71ef5b1164e9eb29f1a7a81291b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMovement: {fileID: 3197995019972035198}
-  <EnemyData>k__BackingField: {fileID: 11400000, guid: c5532ff38bc86b947b8c11e68ef435c9, type: 2}
+  _enemyMovementController: {fileID: 3197995019972035198}
+  _rigidbody: {fileID: 9099327526041952628}
+  _spriteRenderer: {fileID: 9136435351331226652}
+  <EnemyData>k__BackingField: {fileID: 11400000, guid: c578bc170d2caa8429c7bf8307044068, type: 2}
 --- !u!1 &7488739357307212661
 GameObject:
   m_ObjectHideFlags: 0

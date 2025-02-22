@@ -8,6 +8,7 @@ namespace BrackeysJam.PlayerController
     public class PlayerMovementController : MonoBehaviourWithMovementEffector, IEnableable
     {
         public Vector2 MoveInputVector { get; private set; }
+        public bool IsEnabled => _enabled;
         private bool _enabled = false;
 
         private float _speed;
@@ -93,6 +94,7 @@ namespace BrackeysJam.PlayerController
             _input.Player.Movement.performed -= OnMovementPerformed;
             _input.Player.Movement.canceled -= OnMovementCanceled;
         }
+
 
         #endregion
     }

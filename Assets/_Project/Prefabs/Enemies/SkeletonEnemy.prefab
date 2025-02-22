@@ -231,9 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridSize: 1
-  _obstaclesMask:
-    serializedVersion: 2
-    m_Bits: 64
   _drawDebugLines: 0
 --- !u!114 &6961063562382835253
 MonoBehaviour:
@@ -247,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3d137338cc4bb4b429152a22ca65a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMovement: {fileID: 8781919126013976561}
+  _enemyMovementController: {fileID: 8781919126013976561}
+  _rigidbody: {fileID: 4030420581599771385}
+  _spriteRenderer: {fileID: 7444074191723198461}
   <ShootData>k__BackingField: {fileID: 11400000, guid: 19c4c21ea58acf14aac108293338df72, type: 2}
   <ShootPoint>k__BackingField: {fileID: 4344638825919686165}

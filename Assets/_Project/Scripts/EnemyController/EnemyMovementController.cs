@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using Aoiti.Pathfinding;
 using BrackeysJam.Core;
+using BrackeysJam.PlayerController;
 using UnityEngine;
 
 namespace BrackeysJam.EnemyController
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyMovement : MonoBehaviourWithMovementEffector
+    public class EnemyMovementController : MonoBehaviourWithMovementEffector, IEnableable
     {
         [SerializeField] private float _gridSize = 0.5f;
-        [SerializeField] private LayerMask _obstaclesMask;
         [SerializeField] private bool _drawDebugLines;
 
         private Pathfinder<Vector2> _pathfinder;
@@ -17,17 +17,38 @@ namespace BrackeysJam.EnemyController
         private List<Vector2> _pathLeftToGo = new();
 
         public float MoveSpeed { get; private set; }
+        public bool IsEnabled => _enabled;
+
         public Rigidbody2D Rigidbody => _rb;
 
         private Rigidbody2D _rb;
         private SpriteRenderer _spriteRenderer;
+        
+        private bool _enabled = false;
+        private LayerMask _obstaclesMask;
 
-        private void Awake()
+        
+        public void Initialize(Rigidbody2D rb, SpriteRenderer sr)
         {
             _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _pathfinder = new Pathfinder<Vector2>(GetDistance, GetNeighbourNodes, 1000);
+
+            _obstaclesMask = 1 << LayerMask.NameToLayer(Constants.OBSTACLE_LAYER_NAME);
+            
+            Enable();
         }
+        
+        public void Enable()
+        {
+            _enabled = true;
+        }
+
+        public void Disable()
+        {
+            _enabled = false;
+        }
+
 
         private void FixedUpdate()
         {
@@ -141,5 +162,6 @@ namespace BrackeysJam.EnemyController
         //     newPath.Add(path[^1]);
         //     return newPath;
         // }
+
     }
 }

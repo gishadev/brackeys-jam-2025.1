@@ -25,15 +25,15 @@ namespace BrackeysJam.EnemyController
         {
             StateMachine = new StateMachine();
 
-            var shooting = new Shooting(this, EnemyMovement, _diContainer);
-            var moveAway = new MoveAway(this, EnemyMovement);
+            var shooting = new Shooting(this, EnemyMovementController, _diContainer);
+            var moveAway = new MoveAway(this, EnemyMovementController);
             var die = new Die(this);
 
             #region Idle/Follow/Return
 
-            var idle = new Idle(EnemyMovement);
-            var follow = new Follow(this, EnemyMovement);
-            var returnToStart = new ReturnToStart(this, EnemyMovement);
+            var idle = new Idle(EnemyMovementController);
+            var follow = new Follow(this, EnemyMovementController);
+            var returnToStart = new ReturnToStart(this, EnemyMovementController);
             At(idle, follow, InSightWithPlayer);
             At(follow, returnToStart, () => !InSightWithPlayer());
             At(returnToStart, idle, IsInStartArea);
