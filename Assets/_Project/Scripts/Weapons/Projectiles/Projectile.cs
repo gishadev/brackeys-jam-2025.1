@@ -12,7 +12,7 @@ namespace BrackeysJam.Weapons.Projectiles
 
         [SerializeField] private ParticleSystem _hitEffect;
         
-        private Vector3 _targetPosition;
+        protected Vector3 _targetPosition;
 
         public void SetStartPosition(Vector2 position)
         {
@@ -29,6 +29,11 @@ namespace BrackeysJam.Weapons.Projectiles
             transform.parent = null;
             transform.gameObject.SetActive(true);
 
+            MoveToTarget();
+        }
+
+        protected virtual void MoveToTarget()
+        {
             _rigidbody.linearVelocity = (_targetPosition - transform.position).normalized * _speed;
         }
 

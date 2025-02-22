@@ -37,23 +37,6 @@ namespace BrackeysJam.Weapons
 
         public abstract void Use();
 
-        protected void PlayEffect()
-        {
-            var freeEffect = _effectsPool.FirstOrDefault(e => !e.gameObject.activeSelf);
-            if (freeEffect == null)
-            {
-                freeEffect = Instantiate(WeaponData.Effect, transform);
-                freeEffect.transform.ResetTransform();
-                freeEffect.gameObject.SetActive(false);
-
-                _effectsPool.Add(freeEffect);
-            }
-            
-            freeEffect.gameObject.SetActive(true);
-            freeEffect.Play();
-            DisableEffect(freeEffect).Forget();
-        }
-
         protected async UniTaskVoid DisableEffect(ParticleSystem effect)
         {
             await UniTask.WaitForSeconds(WeaponData.MaxEffectTime);
