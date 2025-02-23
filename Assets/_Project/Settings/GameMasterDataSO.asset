@@ -12,5 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e7447968e94dc4942320139986c972, type: 3}
   m_Name: GameMasterDataSO
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 7103ecb8d9cedcb46b13293e60b662f3, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: EnemiesSpawningDataSO
+      Entry: 10
+      Data: 0
   <EnemyBaseMaterial>k__BackingField: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   <EnemyEliteOutlineMaterial>k__BackingField: {fileID: 2100000, guid: 5b39e5bef1c3c4a41b5428d88028c084, type: 2}

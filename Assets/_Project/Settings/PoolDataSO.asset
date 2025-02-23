@@ -15,6 +15,21 @@ MonoBehaviour:
   <SFXPoolObjects>k__BackingField: []
   <VFXPoolObjects>k__BackingField: []
   <OtherPoolObjects>k__BackingField:
-  - <Name>k__BackingField: Enemy_Projectile
+  - <Name>k__BackingField: Projectile_Enemy
     <Prefabs>k__BackingField:
     - {fileID: 3917482445967802638, guid: 7ae068b286d17704998b4ef1191b5969, type: 3}
+  - <Name>k__BackingField: Enemy_Orc
+    <Prefabs>k__BackingField:
+    - {fileID: 3740903199716507989, guid: 7b0625388a353eb419a339e4a9772d9b, type: 3}
+  - <Name>k__BackingField: Enemy_Skeleton
+    <Prefabs>k__BackingField:
+    - {fileID: 8422031912866135507, guid: ce1d6827525141d4389095289f747d4c, type: 3}
+  - <Name>k__BackingField: Enemy_Slime
+    <Prefabs>k__BackingField:
+    - {fileID: 6583537868514798965, guid: 75f142c0d4c2ed147a91a15982423897, type: 3}
+  - <Name>k__BackingField: Enemy_Werebear
+    <Prefabs>k__BackingField:
+    - {fileID: 8047126813733293124, guid: 54b18ea9f8c1908478752759d60ac2fc, type: 3}
+  - <Name>k__BackingField: Enemy_Werewolf
+    <Prefabs>k__BackingField:
+    - {fileID: 4314753253290101151, guid: a267adc2661a2be4bb052ab8222bee26, type: 3}

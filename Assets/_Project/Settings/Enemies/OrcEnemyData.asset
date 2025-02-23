@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: PoolEnumType
       Entry: 3
-      Data: 0
-    - Name: IsBoss
+      Data: 1
+    - Name: IsElite
       Entry: 5
       Data: false
     - Name: StartHealth
@@ -48,3 +48,9 @@ MonoBehaviour:
     - Name: FollowRadius
       Entry: 4
       Data: 25
+    - Name: SpawningPrice
+      Entry: 3
+      Data: 100
+    - Name: SpawningDifficultyLevel
+      Entry: 3
+      Data: 1

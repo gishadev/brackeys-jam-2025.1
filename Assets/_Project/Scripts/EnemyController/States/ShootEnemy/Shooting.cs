@@ -53,7 +53,7 @@ namespace BrackeysJam.EnemyController
                 var shootRotation =
                     Quaternion.AngleAxis(Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg, Vector3.forward);
 
-                OtherPoolEnum projectilePoolKey = OtherPoolEnum.ENEMY_PROJECTILE;
+                OtherPoolEnum projectilePoolKey = OtherPoolEnum.PROJECTILE_ENEMY;
                 var projectile = _otherEmitter
                     .EmitAt(projectilePoolKey, _enemy.ShootPoint.position, shootRotation)
                     .GetComponent<EnemyProjectile>();

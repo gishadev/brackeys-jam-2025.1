@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: PoolEnumType
       Entry: 3
-      Data: 0
+      Data: 4
     - Name: IsElite
       Entry: 5
       Data: true
@@ -48,3 +48,9 @@ MonoBehaviour:
     - Name: FollowRadius
       Entry: 4
       Data: 25
+    - Name: SpawningPrice
+      Entry: 3
+      Data: 1000
+    - Name: SpawningDifficultyLevel
+      Entry: 3
+      Data: 4

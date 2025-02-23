@@ -12,6 +12,7 @@ namespace gishadev.tools.Pooling
     public abstract class PoolManager<T> : IInitializable, IDisposable where T : PoolObject, new()
     {
         [Inject] protected PoolDataSO PoolDataSO { get; }
+        [Inject] private DiContainer _diContainer;
 
         private Dictionary<IPoolObject, List<GameObject>> _objectsByPoolObject = new();
         private Dictionary<IPoolObject, Transform> _parentByPoolObject = new();
@@ -99,7 +100,7 @@ namespace gishadev.tools.Pooling
         {
             Transform parent = _parentByPoolObject[po];
 
-            GameObject createdObject = Object.Instantiate(prefab, parent);
+            var createdObject = _diContainer.InstantiatePrefab(prefab, parent);
             _objectsByPoolObject[po].Add(createdObject);
 
             return createdObject;

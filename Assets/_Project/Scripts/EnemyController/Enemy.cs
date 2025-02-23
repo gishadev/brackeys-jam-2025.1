@@ -56,7 +56,6 @@ namespace BrackeysJam.EnemyController
         {
             _enemyMovementController = GetComponentInChildren<EnemyMovementController>();
             _rigidbody = GetComponentInChildren<Rigidbody2D>();
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
             UnityEditor.EditorUtility.SetDirty(this);
         }

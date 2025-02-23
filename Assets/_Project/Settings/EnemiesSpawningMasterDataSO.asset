@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68e4ab5a1b34c1f9969b6faf3e43d18, type: 3}
+  m_Name: EnemiesSpawningMasterDataSO
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: MaxEnemiesCount
+      Entry: 3
+      Data: 50
+    - Name: SpawningIterationDelayInSeconds
+      Entry: 3
+      Data: 2
+    - Name: MinGroupSize
+      Entry: 3
+      Data: 1
+    - Name: MaxGroupSize
+      Entry: 3
+      Data: 5
+    - Name: StartSpawnCash
+      Entry: 3
+      Data: 200
+    - Name: StartDifficultyLevel
+      Entry: 3
+      Data: 200
+    - Name: MaxRoundTimeInSeconds
+      Entry: 3
+      Data: 120
+    - Name: MaxEnemiesCountToMoveToNextRound
+      Entry: 3
+      Data: 2
+    - Name: DifficultyLevelIncreasePerRound
+      Entry: 3
+      Data: 1
+    - Name: SpawnCashIncreasePerRound
+      Entry: 3
+      Data: 100
+  _enemiesData:
+  - {fileID: 11400000, guid: c578bc170d2caa8429c7bf8307044068, type: 2}
+  - {fileID: 11400000, guid: c5532ff38bc86b947b8c11e68ef435c9, type: 2}
+  - {fileID: 11400000, guid: 88b94553351efc341861d43c893f147e, type: 2}
+  - {fileID: 11400000, guid: 19c4c21ea58acf14aac108293338df72, type: 2}
+  - {fileID: 11400000, guid: a55c063424b5f974db20989c685e1cb8, type: 2}
+  - {fileID: 11400000, guid: 6e06e0cec110a2246a720d04d3a1f03d, type: 2}
+  - {fileID: 11400000, guid: 9b707f0109a1fbd4c9f258b2d90935a8, type: 2}
+  - {fileID: 11400000, guid: df3ec7c485ce7f344a91c21041b8523c, type: 2}
+  - {fileID: 11400000, guid: a70edcb197420e84ca67e69f849630de, type: 2}
+  - {fileID: 11400000, guid: fdd197e44e24d6148be80d19fd4cbc78, type: 2}

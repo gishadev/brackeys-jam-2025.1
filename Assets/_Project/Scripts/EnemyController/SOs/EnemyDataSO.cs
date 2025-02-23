@@ -8,7 +8,7 @@ namespace BrackeysJam.EnemyController.SOs
         [HorizontalGroup("Split")]
         [VerticalGroup("Split/Left")]
         [BoxGroup("Split/Left/General")]
-        [ValidateInput(nameof(CanOnlyBeEnemyEnum), "This spawn spot is for ENEMY only")]
+        [ValidateInput(nameof(CanOnlyBeEnemyEnum), "For ENEMY ENUM only")]
         [OdinSerialize, ShowInInspector, InfoBox("Select only ENEMY enum!")]
         public OtherPoolEnum PoolEnumType { private set; get; }
 
@@ -44,6 +44,14 @@ namespace BrackeysJam.EnemyController.SOs
         [OdinSerialize, ShowInInspector]
         public float FollowRadius { private set; get; } = 10f;
 
+        [BoxGroup("Spawning")]
+        [OdinSerialize, ShowInInspector]
+        public int SpawningPrice { private set; get; } = 10;
+        
+        [BoxGroup("Spawning")]
+        [OdinSerialize, ShowInInspector]
+        public int SpawningDifficultyLevel { private set; get; } = 1;
+        
         private bool CanOnlyBeEnemyEnum(OtherPoolEnum poolEnum, ref string errorMessage)
         {
             if (poolEnum.ToString().Contains("ENEMY"))
