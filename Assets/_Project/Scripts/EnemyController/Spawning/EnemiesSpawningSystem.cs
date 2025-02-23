@@ -34,7 +34,7 @@ namespace BrackeysJam.EnemyController.Spawning
             _gameManager.GameStarted += OnGameStarted;
 
             _enemyFactory = new EnemyFactory(_otherEmitter);
-            _positionGetter = new RectangleBoundsSpawningPositionGetter(Vector2.zero, Vector2.one * 10f);
+            _positionGetter = new RectangleBoundsSpawningPositionGetter(Vector2.zero, Vector2.one * 25f);
 
             _spawningSystemCts = new CancellationTokenSource();
         }
