@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BrackeysJam.PlayerController;
 using BrackeysJam.Weapons.Factory;
 using BrackeysJam.Weapons.Projectiles;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace BrackeysJam.Weapons.ConcreteWeapons
 
         private Collider2D[] _colliders = new Collider2D[1];
 
-        public override void Equip()
+        public override void Equip(IPlayerStats stats)
         {
-            base.Equip();
+            base.Equip(stats);
             _projectileFactory = new ProjectileFactory();
         }
 
@@ -42,6 +43,8 @@ namespace BrackeysJam.Weapons.ConcreteWeapons
             projectile.SetStartPosition(transform.position);
             projectile.SetTargetPosition(_colliders[0]?.transform.position ?? transform.forward);
 
+            projectile.OnHit += Damage;
+            
             projectile.Run();
             DisableEffect(projectile.transform.GetComponent<ParticleSystem>()).Forget();
         }

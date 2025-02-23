@@ -21,6 +21,8 @@ namespace BrackeysJam.PlayerController
         
         private Dictionary<IWeapon, float> _weaponToExpirationTime;
         private Dictionary<IWeapon, float> _weaponToCastTime;
+
+        private IPlayerStats _stats;
         
         private bool _enabled = false;
 
@@ -30,12 +32,14 @@ namespace BrackeysJam.PlayerController
             UpdateCastTime();
         }
 
-        public void Initialize()
+        public void Initialize(IPlayerStats stats)
         {
             _weaponFactory = new WeaponFactory();
             _activeWeapons = new List<IWeapon>();
             _weaponToExpirationTime = new Dictionary<IWeapon, float>();
             _weaponToCastTime = new Dictionary<IWeapon, float>();
+            
+            _stats = stats;
             
             LoadWeapon(_baseWeapon);
 
@@ -57,7 +61,7 @@ namespace BrackeysJam.PlayerController
 
             _weaponUIContainer.AddWeapon(weaponData);
 
-            weapon.Equip();
+            weapon.Equip(_stats);
         }
 
         private void RemoveWeapon(IWeapon weapon)

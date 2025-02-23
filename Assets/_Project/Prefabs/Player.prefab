@@ -162,6 +162,7 @@ MonoBehaviour:
   _speed: 500
   _movementController: {fileID: 3406849207582631122}
   _attackController: {fileID: 5795287470949703589}
+  _stats: {fileID: 0}
   _rb: {fileID: 2669483500213298062}
   _spriteRenderer: {fileID: 5310276254211073828}
   <StartHealth>k__BackingField: 20
