@@ -38,10 +38,10 @@ MonoBehaviour:
       Data: 200
     - Name: StartDifficultyLevel
       Entry: 3
-      Data: 200
+      Data: 1
     - Name: MaxRoundTimeInSeconds
       Entry: 3
-      Data: 120
+      Data: 30
     - Name: MaxEnemiesCountToMoveToNextRound
       Entry: 3
       Data: 2

@@ -18,7 +18,7 @@ MonoBehaviour:
   SpellAmplifier: 2
   Range: 20
   CastCooldown: 1
-  CanExpire: 1
+  CanExpire: 0
   ExpirationTime: 30
   Prefab: {fileID: 3043796179125965548, guid: 798e7156269e905459c2e7459e70b463, type: 3}
   Icon: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5, type: 3}
