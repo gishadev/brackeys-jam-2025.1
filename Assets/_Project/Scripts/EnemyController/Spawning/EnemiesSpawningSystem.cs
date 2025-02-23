@@ -62,10 +62,10 @@ namespace BrackeysJam.EnemyController.Spawning
                 SpawningAsync(spawningCts.Token);
 
                 var timerAsync = UniTask.WaitForSeconds(SpawningData.MaxRoundTimeInSeconds,
-                    cancellationToken: _spawningSystemCts.Token);
+                    cancellationToken: _spawningSystemCts.Token).SuppressCancellationThrow();
                 var enemiesCountAsync = UniTask.WaitUntil(() =>
                         GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG_NAME).Length == 0,
-                    cancellationToken: _spawningSystemCts.Token);
+                    cancellationToken: _spawningSystemCts.Token).SuppressCancellationThrow();
 
                 await UniTask.WhenAny(timerAsync, enemiesCountAsync);
 
@@ -96,7 +96,7 @@ namespace BrackeysJam.EnemyController.Spawning
                 }
 
                 await UniTask.WaitForSeconds(SpawningData.SpawningIterationDelayInSeconds,
-                    cancellationToken: cancellationToken);
+                    cancellationToken: cancellationToken).SuppressCancellationThrow();
             }
         }
 
