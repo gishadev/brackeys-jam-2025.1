@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: LightningData
   m_EditorClassIdentifier: 
   Name: LightningSpell
-  Damage: 5
-  Range: 10
-  Attacks: 1
+  MagicAdd: 80
+  PhysicalAdd: 20
+  SpellAmplifier: 4
+  Range: 20
   CastCooldown: 2
-  CanExpire: 0
-  ExpirationTime: 15
+  CanExpire: 1
+  ExpirationTime: 30
   Prefab: {fileID: 3043796179125965548, guid: ae527c9332a3f294d837451975035c49, type: 3}
   Icon: {fileID: 21300008, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
   MaxEffectTime: 3

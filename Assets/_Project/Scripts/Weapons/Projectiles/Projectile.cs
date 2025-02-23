@@ -1,10 +1,13 @@
 ﻿using System;
+using BrackeysJam.Core;
 using UnityEngine;
 
 namespace BrackeysJam.Weapons.Projectiles
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
+        public event Action<IDamageable> OnHit;
+        
         [SerializeField] private float _speed;
         [SerializeField] private float _maxTime;
 
@@ -39,6 +42,7 @@ namespace BrackeysJam.Weapons.Projectiles
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            OnHit?.Invoke(other.gameObject.GetComponent<IDamageable>());
             gameObject.SetActive(false);
 
             var hit = Instantiate(_hitEffect, transform.position, Quaternion.identity);

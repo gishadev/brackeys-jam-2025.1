@@ -11,9 +11,10 @@ namespace BrackeysJam.Weapons
         public string Name;
         
         [Header("Damage Info")]
-        public int Damage;
+        public int MagicAdd;
+        public int PhysicalAdd;
+        public int SpellAmplifier;
         public int Range;
-        public int Attacks = 1;
         public int CastCooldown;
 
         public bool CanExpire = true;

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: SwordData
   m_EditorClassIdentifier: 
   Name: Sword
-  Damage: 10
-  Range: 1
-  Attacks: 1
+  MagicAdd: 0
+  PhysicalAdd: 100
+  SpellAmplifier: 1
+  Range: 3
   CastCooldown: 1
-  CanExpire: 0
-  ExpirationTime: 0
+  CanExpire: 1
+  ExpirationTime: 30
   Prefab: {fileID: 2938928530332001125, guid: b4a4bc50f31eb9c4bbc3cc2650e248c2, type: 3}
   Icon: {fileID: -3168733581550749585, guid: f7043b7291f49844b9671b3d3dedcbb5, type: 3}
-  MaxEffectTime: 0
+  MaxEffectTime: 1
   Effect: {fileID: 198228695255049524, guid: fcac2b17d8455774f9551a4993a7aa48, type: 3}

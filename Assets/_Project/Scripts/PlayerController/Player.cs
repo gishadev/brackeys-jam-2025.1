@@ -14,7 +14,8 @@ namespace BrackeysJam.PlayerController
         [Header("Controllers")] 
         [SerializeField, Required] private PlayerMovementController _movementController;
         [SerializeField, Required] private PlayerAttackController _attackController;
-
+        [SerializeField, Required] private PlayerStats _stats;
+        
         [Header("Native Components")] 
         [SerializeField, Required] private Rigidbody2D _rb;
         [SerializeField, Required] private SpriteRenderer _spriteRenderer;
@@ -29,7 +30,7 @@ namespace BrackeysJam.PlayerController
         public async UniTask Initialize()
         {
             _movementController.Initialize(_speed, Rigidbody, _spriteRenderer);
-            _attackController.Initialize();
+            _attackController.Initialize(_stats);
         }
 
 #if UNITY_EDITOR
